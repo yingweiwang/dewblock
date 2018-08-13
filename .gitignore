@@ -1,5 +1,10 @@
-node_modules
-npm-debug.log
-.idea
-src/*.js
-src/*.map
+dewcoin-cloud/node_modules
+dewcoin-cloud/npm-debug.log
+dewcoin-cloud/src/*.js
+dewcoin-cloud/src/*.map
+dewcoin-dew/node_modules
+dewcoin-dew/npm-debug.log
+dewcoin-dew/src/*.js
+dewcoin-dew/src/*.map
+
+

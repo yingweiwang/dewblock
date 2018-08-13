@@ -1,54 +1,40 @@
-# Dewcoin
+# Dewcoin 
 
-naivecoin dew computing version. a proof of concept for blockchain applications that follow dew computing principles. http://www.dewcomputing.org/
+Dewcoin is a blockchain cryptocurrency system that is based on dew computing principles. The code is pretty detailed but still not detailed enough for immediate production operation. It is basically a Proof of Concept system. The mechanism of dewcoin will be introduced separately. Some information about dew computing can be found in: http://www.dewcomputing.org/
 
-(in progress)
+Dewcoin is based on Naivecoin. The introduction of Naivecoin can be found in: A tutorial for building a cryptocurrency https://lhartikk.github.io/
 
+
+## Package Placement
+
+Dewcoin has two components: dewcoin-cloud package and the dewcoin-dew package. Ideally, dewcoin-cloud package should be placed in a computer that is running all the time and has a fixed IP address so that it can be accessed easily; dewcoin-dew package can be placed in a local computer. For testing purposes, dewcoin-cloud package and dewcoin-dew package can be placed in the same computer. 
+
+## Package Configuraton
+
+Configuraton files:
+dewcoin-dew/src/config.ts
+dewcoin-cloud/src/config.ts
+
+Detailed configuration guidelines can be found in these files.
+
+Please notice: if only one machine is involved in testing, default config files are OK. If more than one machine is involved, config files should not use localhost or 127.0.0.1 at all.
+
+
+## Package Installation
+
+Both packages should be installed in Node.js environment. 
+
+Installation command: 
 ```
 npm install
+```
+Running command: 
+```
 npm start
 ```
+## Dewcoin Operation
 
-##### Get blockchain
-```
-curl http://localhost:3001/blocks
-```
+Dewcoin system can be operated through an API composed of a group of HTTP commands. These commands can be issued through browsers, designed web forms, or HTTP clients such as curl.
 
-##### Mine a block
-```
-curl -X POST http://localhost:3001/mineBlock
-``` 
+We use curl to describe the API, but it does not mean curl is the only way to operate Dewcoin.
 
-##### Send transaction
-```
-curl -H "Content-type: application/json" --data '{"address": "04bfcab8722991ae774db48f934ca79cfb7dd991229153b9f732ba5334aafcd8e7266e47076996b55a14bf9913ee3145ce0cfc1372ada8ada74bd287450313534b", "amount" : 35}' http://localhost:3001/sendTransaction
-```
-
-##### Query transaction pool
-```
-curl http://localhost:3001/transactionPool
-```
-
-##### Mine transaction
-```
-curl -H "Content-type: application/json" --data '{"address": "04bfcab8722991ae774db48f934ca79cfb7dd991229153b9f732ba5334aafcd8e7266e47076996b55a14bf9913ee3145ce0cfc1372ada8ada74bd287450313534b", "amount" : 35}' http://localhost:3001/mineTransaction
-```
-
-##### Get balance
-```
-curl http://localhost:3001/balance
-```
-
-#### Query information about a specific address
-```
-curl http://localhost:3001/address/04f72a4541275aeb4344a8b049bfe2734b49fe25c08d56918f033507b96a61f9e3c330c4fcd46d0854a712dc878b9c280abe90c788c47497e06df78b25bf60ae64
-```
-
-##### Add peer
-```
-curl -H "Content-type:application/json" --data '{"peer" : "ws://localhost:6001"}' http://localhost:3001/addPeer
-```
-#### Query connected peers
-```
-curl http://localhost:3001/peers
-```
